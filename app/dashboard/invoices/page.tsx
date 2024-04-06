@@ -1,4 +1,5 @@
 import Pagination from '@/app/ui/invoices/pagination';
+import { fetchInvoicesPages } from '@/app/lib/data';
 import Search from '@/app/ui/search';
 import InvoicesTable from '@/app/ui/invoices/table';
 import { CreateInvoice } from '@/app/ui/invoices/buttons';
@@ -16,6 +17,8 @@ export default async function Page({
 }) {
   const query = searchParams?.query || '';
   const currentPage = Number(searchParams?.page) || 1;
+
+  const totalPages = await fetchInvoicesPages(query);
  
   return (
     <div className="w-full">
@@ -30,7 +33,7 @@ export default async function Page({
         <InvoicesTable query={query} currentPage={currentPage} />
       </Suspense>
       <div className="mt-5 flex w-full justify-center">
-        {/* <Pagination totalPages={totalPages} /> */}
+        <Pagination totalPages={totalPages} />
       </div>
     </div>
   );
