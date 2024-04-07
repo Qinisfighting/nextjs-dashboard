@@ -8,7 +8,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
-  // This function will wrap the contents of handleSearch, and only run the code after a specific time once the user has stopped typing (300ms).
+  // This function below will wrap the contents of handleSearch, and only run the code after a specific time once the user has stopped typing (300ms).
   const handleSearch = useDebouncedCallback((term) => {
     console.log(`Searching... ${term}`);
     const params = new URLSearchParams(searchParams);
