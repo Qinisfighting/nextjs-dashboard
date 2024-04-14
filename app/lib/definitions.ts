@@ -56,6 +56,7 @@ export type InvoicesTable = {
 };
 
 export type CustomersTableType = {
+  
   id: string;
   name: string;
   email: string;
@@ -66,6 +67,7 @@ export type CustomersTableType = {
 };
 
 export type FormattedCustomersTable = {
+  
   id: string;
   name: string;
   email: string;
