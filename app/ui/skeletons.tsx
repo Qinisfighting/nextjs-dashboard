@@ -219,23 +219,31 @@ export function InvoicesTableSkeleton() {
 
 export function CustomersMobileSkeleton() {
   return (
-    <div className="flex flex-col mb-2 w-full rounded-md bg-white p-4">
-      <div className="flex flex-col items-start justify-start border-b border-gray-100 pb-8">  
-          <div className="mr-2 h-8 w-8 rounded-full bg-gray-100"></div>
-          <div className="h-6 w-16 rounded bg-gray-100"></div>
-      </div>
-      <div className="flex w-full items-start justify-center pt-4">
-        <div className="w-full h-8 bg-gray-100">
-          <div className="w-28  rounded"></div>
-          <div className="w-28  rounded"></div>
+    <div className="mb-2 w-full rounded-md bg-white p-4">
+        <div className="flex items-center justify-between border-b pb-4">       
+            <div className="mb-2 flex flex-col items-center gap-3">
+              <div className="flex items-center gap-3">
+                <div className="h-8 w-8 rounded-full bg-gray-100"></div>
+                <div className="h-6 w-20 rounded bg-gray-100"></div>
+              </div>
+              <div className="h-6 w-36 rounded bg-gray-100"></div>
+            </div>
         </div>
-        <div className="w-full h-8 bg-gray-100">
-          <div className="w-28 rounded"></div>
-          <div className="w-28 rounded"></div>
+
+        <div className="flex w-full items-center justify-between border-b py-5">
+            <div className="flex w-1/2 flex-col gap-3">
+                <div className="h-6 w-20 rounded bg-gray-100"></div>
+                <div className="h-6 w-20 rounded bg-gray-100"></div>
+            </div>
+            <div className="flex w-1/2 flex-col gap-3">
+                <div className="h-6 w-20 rounded bg-gray-100"></div>
+                <div className="h-6 w-20 rounded bg-gray-100"></div>
+            </div>
         </div>
-      </div>
-      <div  className="bg-gray-100 w-28 h-8 rounded"></div>
+
+        <div className="h-6 w-24 rounded bg-gray-100"></div>
     </div>
+  
   );
 
 }
