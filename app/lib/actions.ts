@@ -1,4 +1,5 @@
 'use server'; 
+// https://react.dev/reference/react/use-server
 // By adding the 'use server', you mark all the exported functions within the file as server functions. These server functions can then be imported into Client and Server components, making them extremely versatile.
 //You can also write Server Actions directly inside Server Components by adding "use server" inside the action. But for this course, we'll keep them all organized in a separate file.
 import { z } from 'zod';  //import Zod and define a schema that matches the shape of your form object. This schema will validate the formData before saving it to a database.
