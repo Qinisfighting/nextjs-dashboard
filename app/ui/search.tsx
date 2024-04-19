@@ -39,18 +39,20 @@ export default function Search({ placeholder }: { placeholder: string }) {
 
   return (
     <div className="flex flex-col md:flex-row gap-4 pr-8" >
-      <div className="w-full md:w-1/2 ">
+      {pathname === "/dashboard/invoices" && 
+      <div className="w-full">
         <select className="block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 text-gray-500"
           onChange={(e) => {
             handleSelect(e.target.value);
           }}
           >
-          <option value="All" >All</option>
+          <option value="" >All</option>
           <option value="Paid">Paid</option>
           <option value="Pending">Pending</option>
         </select>
       </div>
-      <div className="relative flex w-full md:w-1/2 ">
+      }
+      <div className="relative flex w-full">
         <label htmlFor="search" className="sr-only">
           Search
         </label>
