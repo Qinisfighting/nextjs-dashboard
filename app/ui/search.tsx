@@ -38,7 +38,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-4 pr-8" >
+    <div className="flex flex-col md:flex-row gap-4 pr-8 w-full" >
       {pathname === "/dashboard/invoices" && 
       <div className="w-full">
         <select className="block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 text-gray-500"
