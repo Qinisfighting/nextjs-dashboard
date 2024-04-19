@@ -8,6 +8,7 @@ import {  CustomersTableSkeleton } from '@/app/ui/skeletons';
 
 
 
+
 export const metadata: Metadata = {
     title: 'Customers',
   };
