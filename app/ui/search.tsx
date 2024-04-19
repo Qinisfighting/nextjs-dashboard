@@ -2,11 +2,12 @@
 //https://react.dev/reference/react/use-client  
 
 
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { MagnifyingGlassIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import { useDebouncedCallback } from 'use-debounce';
+import { CustomerField } from '../lib/definitions';
 
-export default function Search({ placeholder }: { placeholder: string }) {
+export default function Search({ placeholder, customers }: { placeholder: string, customers: CustomerField[]}) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -39,7 +40,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
 
   return (
     <div className="flex flex-col md:flex-row gap-4 pr-8 w-full" >
-      {pathname === "/dashboard/invoices" && 
+      {pathname === "/dashboard/invoices" ? 
       <div className="w-full">
         <select className="block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 text-gray-500"
           onChange={(e) => {
@@ -51,6 +52,29 @@ export default function Search({ placeholder }: { placeholder: string }) {
           <option value="Pending">Pending</option>
         </select>
       </div>
+      : 
+      <div className="w-full relative">
+      <select
+        id="customer"
+        name="customerId"
+        className="peer block w-full cursor-pointer rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+        defaultValue={searchParams.get('query')?.toString()}
+        aria-describedby="customer-error"
+        onChange={(e) => {
+          handleSelect(e.target.value);
+        }}
+      >
+         <option value="" >
+            Select a customer
+          </option>
+        {customers?.map((customer) => (   
+          <option key={customer.id} value={customer.name}>
+            {customer.name}
+          </option>
+        ))}
+      </select>
+      <UserCircleIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
+    </div>
       }
       <div className="relative flex w-full">
         <label htmlFor="search" className="sr-only">
