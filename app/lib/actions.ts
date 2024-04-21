@@ -24,7 +24,8 @@ const FormSchema = z.object({
     date: z.string(),
   });
    
-const CreateInvoice = FormSchema.omit({ id: true, date: true });
+
+const CreateInvoice = FormSchema.omit({ id: true, date: true }); // Create a new schema that omits the id and date fields from the FormSchema object. This schema will be used to validate the form data when creating a new invoice.
 const UpdateInvoice = FormSchema.omit({ id: true, date: true });
 
 export type State = {
@@ -80,7 +81,7 @@ export type State = {
     prevState: State,
     formData: FormData,
   ) {
-    const validatedFields = UpdateInvoice.safeParse({
+    const validatedFields = UpdateInvoice.safeParse({ 
       customerId: formData.get('customerId'),
       amount: formData.get('amount'),
       status: formData.get('status'),
@@ -111,7 +112,7 @@ export type State = {
   }
 
   export async function deleteInvoice(id: string) {
-  
+     
     try {
         await sql`DELETE FROM invoices WHERE id = ${id}`;
         revalidatePath('/dashboard/invoices');
@@ -120,16 +121,8 @@ export type State = {
         return { message: 'Database Error: Failed to Delete Invoice.' };
       }
   }
-//   export async function deleteInvoice(id: string) {
-//     const confirmed = window.confirm("Are you sure you want to delete this invoice?");  
-//         if (confirmed) {
-//             await sql`DELETE FROM invoices WHERE id = ${id}`;
-//             revalidatePath('/dashboard/invoices');    
-//     }
 
-  
-   
-// }
+
 
 export async function authenticate(
     prevState: string | undefined,
