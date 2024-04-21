@@ -29,12 +29,13 @@ export function UpdateInvoice({ id }: { id: string }) {
 
 export function DeleteInvoice({ id }: { id: string }) {
 
-const deleteInvoiceWithId = deleteInvoice.bind(null, id)
+// const deleteInvoiceWithId = deleteInvoice.bind(null, id)
 
 function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
   e.preventDefault();
   if (window.confirm("Are you sure you want to delete this invoice?")) {
-    deleteInvoiceWithId();
+    // since i don´t use form action attribute, i´ll call the deleteInvoice function here with id parameter directly, instead of using the deleteInvoiceWithId function with bind() method
+    deleteInvoice(id);
   }
 }
 

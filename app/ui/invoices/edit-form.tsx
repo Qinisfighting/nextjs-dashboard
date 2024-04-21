@@ -23,7 +23,9 @@ export default function EditInvoiceForm({
   customers: CustomerField[];
 }) {
   const initialState = { message: null, errors: {} };
+  // Passing an id as argument in form action attribute won't work, so we need to bind the updateInvoice function with the invoice id
   const updateInvoiceWithId = updateInvoice.bind(null, invoice.id);
+
   const [state, dispatch] = useFormState(updateInvoiceWithId, initialState);
  
  

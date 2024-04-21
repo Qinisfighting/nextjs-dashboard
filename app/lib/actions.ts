@@ -17,7 +17,7 @@ const FormSchema = z.object({
       }),
       amount: z.coerce
       .number()
-      .gt(0, { message: 'Please enter an amount greater than $0.' }),
+      .gt(0, { message: 'Please enter an amount greater than $0.' }), //The `.gt()` function is being called, which stands for "greater than".
     status: z.enum(['pending', 'paid'], {
       invalid_type_error: 'Please select an invoice status.',
     }),
@@ -37,9 +37,9 @@ export type State = {
     message?: string | null;
   };
    
-  export async function createInvoice(prevState: State, formData: FormData) {
+  export async function createInvoice(prevState: State, formData: FormData) { //prevState - contains the state passed from the useFormState hook. You won't be using it in the action in this example, but it's a required prop.
     // Validate form using Zod
-    const validatedFields = CreateInvoice.safeParse({
+    const validatedFields = CreateInvoice.safeParse({ //safeParse() will return an object containing either a success or error field. This will help handle validation more gracefully without having put this logic inside the try/catch block.
       customerId: formData.get('customerId'),
       amount: formData.get('amount'),
       status: formData.get('status'),
